@@ -7,21 +7,16 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-  conn.on("data", (data) => {
-    console.log("Server says: ", data);
-  });
   conn.on("connect", () => {
     console.log("Connection established to game server");
     conn.write("Name: MBM");
-    // conn.write("Move: up");
   });
-  // conn.on("connect", () => {
-  //   conn.write("Move: up");
-  // });
+
+  conn.on("data", (data) => {
+    console.log("Server says: ", data);
+  });
 
   return conn;
 };
-// console.log("Connecting ...");
-connect();
 
-module.exports = connect;
+module.exports = { connect };
