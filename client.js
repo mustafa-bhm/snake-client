@@ -13,9 +13,15 @@ const connect = function () {
   conn.on("connect", () => {
     console.log("Connection established to game server");
     conn.write("Name: MBM");
+    // conn.write("Move: up");
   });
+  // conn.on("connect", () => {
+  //   conn.write("Move: up");
+  // });
 
   return conn;
 };
+// console.log("Connecting ...");
+connect();
 
 module.exports = connect;
