@@ -10,6 +10,10 @@ const connect = function () {
   conn.on("data", (data) => {
     console.log("Server says: ", data);
   });
+  conn.on("connect", () => {
+    console.log("Connection established to game server");
+    conn.write("Name: MBM");
+  });
 
   return conn;
 };
