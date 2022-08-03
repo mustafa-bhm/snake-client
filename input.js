@@ -1,11 +1,13 @@
 const connect = require("./client");
+const {
+  MOVE_UP_KEY,
+  MOVE_LEFT_KEY,
+  MOVE_DOWN_KEY,
+  MOVE_RIGHT_KEY,
+  MESSAGE,
+} = require("./constants");
 // setup interface to handle user input from stdin
 let connection;
-
-const MOVE_UP_KEY = "w";
-const MOVE_LEFT_KEY = "a";
-const MOVE_DOWN_KEY = "s";
-const MOVE_RIGHT_KEY = "d";
 
 const handleUserInput = function (key) {
   // your code here
@@ -24,6 +26,9 @@ const handleUserInput = function (key) {
   if (key === MOVE_LEFT_KEY) {
     connection.write("Move: left");
   }
+  if (key === MESSAGE) {
+    connection.write("Say: HELLO");
+  }
 };
 const setupInput = function (conn) {
   connection = conn;
@@ -34,6 +39,5 @@ const setupInput = function (conn) {
   stdin.resume();
   return stdin;
 };
-// setupInput();
 
 module.exports = { setupInput };
